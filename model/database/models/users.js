@@ -4,9 +4,12 @@ let {Sequelize}= require('sequelize');
 let users = function (){
   let users = sequelize.define('users', {
       // Model attributes are defined here
-      account:  {
+      id: {
         type: Sequelize.STRING,
         primaryKey: true
+      },
+      account:  {
+        type: Sequelize.STRING
       },
       pwd: Sequelize.STRING
     },

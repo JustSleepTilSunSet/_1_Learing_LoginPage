@@ -8,7 +8,7 @@ let Exception = require('../../common/Error');
 let {FN_FAIL_STATUS} = require('../constants');
 /**
  * 1. Get all user infos from database.
- * @returns {Array} result - search result.
+ * @returns {Array<JSON>} result - search result.
  */
 async function getAllUser(){
     try{
@@ -27,8 +27,7 @@ async function getAllUser(){
  */
 async function createUser(userInfo){
     try{
-        let record = _.pick(userInfo, TABLE_ATTRIBUTES);
-        let result = await mDBusers.create(record);
+        let result = await mDBusers.create(userInfo);
         mLogger.info(`result: ${result}`);
         mLogger.info(`[SQL cmd] MySQL successfully create user ${JSON.stringify(result,null,2)}`);
         return result.toJSON();
@@ -82,10 +81,10 @@ async function getUserInfoByEmail(email){
     }
 }
 
-exports.getAllUser = getAllUser;
-exports.createUser = createUser;
 exports.PRIMARY_KEYS = PRIMARY_KEYS;
 exports.TABLE_ATTRIBUTES = TABLE_ATTRIBUTES;
+exports.getAllUser = getAllUser;
+exports.createUser = createUser;
 exports.getUserInfoById = getUserInfoById;
 exports.getAllUser = getAllUser;
 exports.getUserInfoByEmail = getUserInfoByEmail;
