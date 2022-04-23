@@ -16,6 +16,14 @@ module.exports = class Users{
         });
     }
 
+    async updatePassword(){
+        await usersRepo.updatePassword({
+            pwd:this.pwd
+        },{
+            account:this.account
+        });
+    }
+
     async getAllUser(){
         return (await usersRepo.getAllUser());
     }

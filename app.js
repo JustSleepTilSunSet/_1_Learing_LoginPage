@@ -17,20 +17,31 @@ app.use(rout);
 app.get('/', async (req, res)=>{
     res.render('APIBeginner', {
         'signUpPage': `http://${serverConfig.ip}:${serverConfig.port}/signUpPage`,
-        'loginPage': `http://${serverConfig.ip}:${serverConfig.port}/loginPage`
+        'loginPage': `http://${serverConfig.ip}:${serverConfig.port}/loginPage`,
+        'forgetPwdPage': `http://${serverConfig.ip}:${serverConfig.port}/forgetPwdPage`
     });
-    // res.send(`<a herf ="http://127.0.0.1:17200/signUpPage"`);
 });
+
+/**
+ * 1. Build page.
+ */
 app.use('/scripts/index.js', express.static(__dirname + '\\views'+'\\scripts\\index.js'));
 app.get('/loginPage', async (req, res)=>{
     res.render('loginPage.html');
 });
-
 app.get('/signUpPage', function (req, res){
     res.render('signupPage.html');
 });
+app.get('/forgetPwdPage', function (req, res){
+    res.render('forgetPwdPage.html');
+});
+
+/**
+ * 1. Terminal interface notice.
+ */
 mLogger.info(__dirname + '\\views'+'\\scripts\\index.js');
 mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/`);
 mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/signUpPage`);
 mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/loginPage`);
+mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/forgetPwdPage`);
 app.listen(serverConfig.port);

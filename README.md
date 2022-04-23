@@ -1,7 +1,13 @@
-[2022-04-23T13:23:23.612] [INFO] app - http://127.0.0.1:17200/
-[2022-04-23T13:23:23.613] [INFO] app - http://127.0.0.1:17200/signUpPage
-[2022-04-23T13:23:23.613] [INFO] app - http://127.0.0.1:17200/loginPage
+DB info:
+    - mysql
 
-
-    <p><a href="<%= signUpPage %>"> signUpPage </a></p>
-    <p><a href="<%= loginPage %>"> loginPage </a></p>
+How to build the project?
+  
+    - Step1. Install nodeJs.
+      
+    - Step2. npm install(install all package).
+      
+    - Step2. npm start(start the server).
+      
+    - Step3. Click http://127.0.0.1:17200/ in your terminal interface(ex: command line etc.......).
+      

@@ -6,6 +6,23 @@ let PRIMARY_KEYS = mDBusers['primaryKeys'];
 let TABLE_ATTRIBUTES = Object.keys(mDBusers['tableAttributes']);
 let Exception = require('../../common/Error');
 let {FN_FAIL_STATUS} = require('../constants');
+
+/**
+ * 1. update password.
+ * @param {<JSON>} newUserInfo 
+ */
+async function updatePassword(newPassword, updateCondition){
+    try{
+        return await mDBusers.update(newPassword,{
+            where: updateCondition,
+            returning:true,
+            raw:true
+        });
+    }catch(error){
+        mLogger.error(`[SQL cmd] MySQL update datas fail ${JSON.stringify(error,null,2)}`);
+        throw error;
+    }
+}
 /**
  * 1. Get all user infos from database.
  * @returns {Array<JSON>} result - search result.
@@ -85,6 +102,7 @@ exports.PRIMARY_KEYS = PRIMARY_KEYS;
 exports.TABLE_ATTRIBUTES = TABLE_ATTRIBUTES;
 exports.getAllUser = getAllUser;
 exports.createUser = createUser;
+exports.updatePassword = updatePassword;
 exports.getUserInfoById = getUserInfoById;
 exports.getAllUser = getAllUser;
 exports.getUserInfoByEmail = getUserInfoByEmail;
