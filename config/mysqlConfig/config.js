@@ -1,5 +1,5 @@
 const config = {
-    host: '127.0.0.1',
+    host: process.env.DB_HOST,
     user: 'root',     
     password: 'root',
     database: 'learning1',

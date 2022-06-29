@@ -1,3 +1,4 @@
+
 const mLogger = require('log4js').getLogger('app');
 mLogger.level = "all";
 const cors = require('cors');
@@ -9,7 +10,7 @@ const rout = require('./controller/router');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '\\views');
+app.set('views', `${__dirname}/views`);
 app.engine('html', require('ejs').renderFile);
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
@@ -25,7 +26,8 @@ app.get('/', async (req, res)=>{
 /**
  * 1. Build page.
  */
-app.use('/scripts/index.js', express.static(__dirname + '\\views'+'\\scripts\\index.js'));
+app.use('/scripts/index.js', express.static(__dirname + '/views'+'/scripts/index.js'));
+
 app.get('/loginPage', async (req, res)=>{
     res.render('loginPage.html');
 });
@@ -35,13 +37,6 @@ app.get('/signUpPage', function (req, res){
 app.get('/forgetPwdPage', function (req, res){
     res.render('forgetPwdPage.html');
 });
-
-/**
- * 1. Terminal interface notice.
- */
-mLogger.info(__dirname + '\\views'+'\\scripts\\index.js');
-mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/`);
-mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/signUpPage`);
-mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/loginPage`);
-mLogger.info(`http://${serverConfig.ip}:${serverConfig.port}/forgetPwdPage`);
-app.listen(serverConfig.port);
+mLogger.debug(`http://${serverConfig.ip}:${serverConfig.port}/signUpPage`);
+mLogger.debug(__dirname + '/views'+'/scripts/index.js');
+module.exports = app;

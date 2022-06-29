@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  learning1_userlogin:
+    build: ./developments
+    container_name: learning1_userlogin
+    stdin_open: true
+    tty: true
+    environment:
+      DB_HOST: mysqlDb
+    volumes:
+      - ./:/workspace/
+    ports:
+      - '17200:8889'
+    networks:
+      - beginnerbase
+networks:
+  beginnerbase:

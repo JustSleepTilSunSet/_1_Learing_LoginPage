@@ -1,3 +1,5 @@
+const apiAddress = 'http://127.0.0.1:17200/'
+
 function sendLoginJSON(){
 
     // let Username = document.querySelector('#floatingEmail');
@@ -10,7 +12,7 @@ function sendLoginJSON(){
 
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://127.0.0.1:17200/login/";
+    let url = `${apiAddress}login/`;
 
     // open a connection.
     xhr.open("POST", url, true);
@@ -43,7 +45,7 @@ function sendSignupJSON(){
 
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://127.0.0.1:17200/signup";
+    let url = `${apiAddress}signup/`;
 
     // open a connection.
     xhr.open("POST", url, true);
@@ -76,7 +78,7 @@ function sendUpdatePwdJSON(){
 
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://127.0.0.1:17200/forgetPwd";
+    let url = `${apiAddress}forgetPwd/`;
 
     // open a connection.
     xhr.open("POST", url, true);
